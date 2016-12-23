@@ -68,7 +68,7 @@ class ExcelWriter(Workbook):
         if_aif_ratio = "=IF(OR(" + i6 + "=0," + j6 + "=0), \"\", " + i6 + "/(" + j6 + "*0.2))"
         chf_value = "=IF(OR(" + i6 + "=\"\"," + j6 + "=\"\", " + c6 + "=\"\", " + d6 + "=\"\"), \"\", " \
                     "3*(" + d6 + "*SQRT(1+" + f6 + ")/" + c6 + ")*(2*" + i6 + "/" + j6 + "+1))"
-        author_ratio = "=IF(OR(" + c6 + "=\"\", " + d6 + "=\"\"), \"\", " + c6 + "/" + d6 + ")"
+        author_ratio = "=IF(OR(" + c6 + "=\"\", " + d6 + "=\"\"), \"\", " + d6 + "/" + c6 + ")"
         chf_author_count = "=IF(COUNTA(" + c5_l5 + ")=0, \"\", COUNTA(" + c5_l5 + "))"
         self.ws.write(k6, if_aif_ratio, self.pub_style)
         self.ws.write(l6, chf_value, self.pub_style)
