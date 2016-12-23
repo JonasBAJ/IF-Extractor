@@ -44,6 +44,8 @@
     ...
 </root>
 ```
+
+`Excel`
 **Norint sukurti šį dokumentą reikia atlikti sekančius žingsnius:**
 
 >1. `Word` dokumentą kuriame yra visos publikacijos reikia išsaugoti `Plain Text` formatu
@@ -55,6 +57,14 @@
 >3. `Excel` programoje atliekame teksto formatavimo žingsnius
 >    - Paliekame tik tuos langelius kuriuose yra publikacija arba/ir jos numeris - kitus šaliname
 >    - Kai kuriais atvejais publikacijos aprašas gali būti "išmėtytas" per du langelius, tokiu atveju publikacijos aprašą reiktų "sujungti" ir patalpinti į vieną langelį
+>4. Sutvarkius formatavimą pažymimę visą stulpelį ir jį filtruojame `Data -> Filter` filtre nurodome filtravimo tvarką `Sort Largest to smallest`
+>5. Altikus filtravimą tekstinę dalį kopijuojame į naują `Sheet'ą` į langelį `B2`
+>6. Pradedant langelyje `A2` sunumeruojame visas publikacijas, galutinis variantas turi atrodyti taip:
+>       ```sh
+>           1 [publikacijos anotacija]
+>           2 [publikacijos anotacija]
+>           ...
+>7. [...]
 
         
 
