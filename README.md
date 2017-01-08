@@ -72,5 +72,5 @@
 ##Programos '*stand-alone*' versijos kompiliavimas
 
 ```sh
-$ pyinstaller --hidden-import lxml --hidden-import html5lib main.py
+$ pyinstaller --hidden-import=xlrd main.py
 ```

@@ -4,7 +4,7 @@ from contextlib import contextmanager
 from os.path import dirname, realpath
 
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver import PhantomJS, Chrome
+from selenium.webdriver import PhantomJS
 from selenium.webdriver.support.expected_conditions import staleness_of
 from selenium.webdriver.support.wait import WebDriverWait
 

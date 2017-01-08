@@ -1,11 +1,8 @@
 # coding=utf-8
 from __future__ import print_function
 
-import codecs
 import re
-from bs4 import BeautifulSoup
-
-import sys
+import pandas
 
 
 class PubData(object):
@@ -33,7 +30,7 @@ class PubData(object):
             "IF: " + str(self.IF)
 
 
-class XMLParser(object):
+class CSVParser(object):
     re_issn = r"\bISSN: [0-9]{4}-[0-9]{4}"
     re_isbn = r"\bISBN: [0-9]{13}"
     re_journal = r"//(.*?)[.|:|/]"
@@ -43,22 +40,17 @@ class XMLParser(object):
     elements = list()
 
     def __init__(self, file_path):
-        xml = codecs.open(file_path, "r", "utf8")
-        if sys.platform == "win32":
-            soup = BeautifulSoup(xml, "html5lib")
-        elif sys.platform == "linux2":
-            soup = BeautifulSoup(xml, "lxml")
-        else:
-            soup = BeautifulSoup(xml)
-        self.elements = soup.find_all("row")
-        xml.close()
+        self.elements = pandas.read_excel(file_path, header=None)
+        self.extract_info()
 
     def extract_info(self):
-        for e in self.elements:
+        count = 1
+        for e in self.elements[0]:
             holder = PubData()
-            holder.count = e["count"]
-            self.__parse_publication(e["text"], holder)
+            holder.count = str(count)
+            self.__parse_publication(e, holder)
             self.pub_list.append(holder)
+            count += 1
 
     def __parse_publication(self, pub_string, holder):
         holder.publication = pub_string

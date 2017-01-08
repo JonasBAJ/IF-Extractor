@@ -7,7 +7,7 @@ from tkFileDialog import askopenfilename
 
 from api.Excel import ExcelWriter
 from api.Web import WebDriverAPI
-from parsers.DocParser import XMLParser
+from parsers.DocParser import CSVParser
 from parsers.Paths import Selectors
 from vu.Regex import RE
 
@@ -18,11 +18,11 @@ SAVE_LOCATION = ""
 def main():
     tk_root = Tkinter.Tk()
     tk_root.withdraw()
-    f_path = askopenfilename(filetypes=[("Foos", "*.xml")])
+    tk_root.update()
+    f_path = askopenfilename(filetypes=[("Foos", "*.xlsx")])
     if f_path:
-        if is_xml_file(f_path):
-            parser = XMLParser(f_path)
-            parser.extract_info()
+        if is_csv_file(f_path):
+            parser = CSVParser(f_path)
             pubs = parser.get_pubs()
             start(pubs)
             write_excel(pubs)
@@ -90,10 +90,10 @@ def write_excel(pubs):
     e.close()
 
 
-def is_xml_file(f_path):
+def is_csv_file(f_path):
     if os.path.exists(f_path) and os.path.isfile(f_path):
         file_name = os.path.split(f_path)[1]
-        if os.path.splitext(file_name)[1] == ".xml":
+        if os.path.splitext(file_name)[1] == ".xlsx":
             return True
     return False
 
